@@ -1,0 +1,9 @@
+{ ... }:
+{
+  imports =
+    [
+      ./keymapp
+      ./yazi
+      ./tailscale
+    ];
+}
