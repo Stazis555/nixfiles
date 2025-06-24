@@ -36,4 +36,20 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  environment.systemPackages = with pkgs; [
+    vulkan-loader
+  ];
+
+  # Mount the /storage partition.
+  fileSystems = {
+    "/storage" = {
+      device = "/dev/nvme0n1p2";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "nofail"
+      ];
+    };
+  };
 }
