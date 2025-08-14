@@ -19,6 +19,7 @@ in {
     xdg.configFile = {
       "waybar/config".source = ./${cfg.style}/config.jsonc;
       "waybar/style.css".source = ./${cfg.style}/style.css;
+      "waybar/mic-playback.sh".source = ./mic-playback.sh;
     };
   };
 }

@@ -152,13 +152,15 @@ tooltip label{
 	background: @bg_hover;
 }
 
-#pulseaudio {
+#pulseaudio,
+#custom-micplaybackvol {
 	font-family: "JetBrainsMono Nerd Font";
 	padding-left: 3px;
   padding-right: 3px;
 	transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-#pulseaudio:hover {
+#pulseaudio:hover,
+#custom-micplaybackvol:hover {
  	background: @bg_hover;
 }
 

@@ -9,6 +9,7 @@
 
     telegram-desktop
     firefox-wayland
+    chromium
     vesktop
     # (vesktop.overrideAttrs(oldAttrs: {
     #     version = "1.5.4";
@@ -47,5 +48,10 @@
     chiaki
     godot_4
     solaar
+
+    mixxx
+    spotdl
+    ffmpeg
+    alsa-utils
   ];
 }

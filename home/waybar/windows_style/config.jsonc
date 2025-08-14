@@ -22,6 +22,7 @@
         "disk",
         "tray",
         "pulseaudio",
+        "custom/micplaybackvol",
         "network",
         // "battery",
         // "hyprland/language",
@@ -176,6 +177,13 @@
         },
         // "on-click": "pwvucontrol"
         "on-click": "pavucontrol"
+    },
+    "custom/micplaybackvol": {
+        "format": " {}%",
+        "exec": "waybar/mic-playback.sh",
+        "interval": 1,
+        "on-scroll-up": "waybar/mic-playback.sh up",
+        "on-scroll-down": "waybar/mic-playback.sh down",
     }
 }
 
