@@ -34,6 +34,7 @@
     # hyprcursor
     rofi-wayland
     xdg-desktop-portal-gtk
+    xdg-desktop-portal
     gtk4
     gtk3
     wine-wayland

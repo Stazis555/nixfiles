@@ -7,6 +7,7 @@ return {
   ---@type AutoSession.Config
   opts = {
     -- suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+    allowed_dirs = { "~/.nixos/", "/storage/projects/*" },
     -- log_level = 'debug',
   },
 }

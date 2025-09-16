@@ -9,11 +9,17 @@
     "height": 41,
     "modules-left": [
         "custom/os_button",
+        "custom/firefox_button",
+        "custom/spotify_button",
+        "custom/lutris_button",
         "hyprland/workspaces",
-        "hyprland/window"
+        "mpris"
+        // "hyprland/window"
         // "wlr/taskbar"
     ],
-    "modules-center": [],
+    "modules-center": [
+        "hyprland/window",
+    ],
     "modules-right": [
         "cpu",
         "temperature",
@@ -43,6 +49,21 @@
         "format": "",
         "on-click": "rofi -show drun",
         "on-click-right": "wlogout",
+        "tooltip": false
+    },
+    "custom/firefox_button": {
+        "format": "󰈹",
+        "on-click": "firefox",
+        "tooltip": false
+    },
+    "custom/spotify_button": {
+        "format": "",
+        "on-click": "spotify",
+        "tooltip": false
+    },
+    "custom/lutris_button": {
+        "format": "🍷",
+        "on-click": "lutris",
         "tooltip": false
     },
     "cpu": {
@@ -180,10 +201,29 @@
     },
     "custom/micplaybackvol": {
         "format": " {}%",
-        "exec": "waybar/mic-playback.sh",
+        "exec": "~/.config/waybar/mic-playback.sh",
         "interval": 1,
-        "on-scroll-up": "waybar/mic-playback.sh up",
-        "on-scroll-down": "waybar/mic-playback.sh down",
+        "on-scroll-up": "~/.config/waybar/mic-playback.sh up",
+        "on-scroll-down": "~/.config/waybar/mic-playback.sh down",
+    },
+    "mpris": {
+        "format": "|  {status_icon} {player_icon}   {artist} - {title}  |",
+        "title-len": 25,
+        "player-icons": {
+            "spotify": "",
+            "firefox": "",
+            "vlc": "󰖔",
+            "mpv": "󰖔",
+            "default": "󰓜"
+        },
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        },
+        "on-click": "playerctl play-pause",
+        "on-click-middle": "playerctl next",
+        "on-click-right": "playerctl previous"
     }
 }
 

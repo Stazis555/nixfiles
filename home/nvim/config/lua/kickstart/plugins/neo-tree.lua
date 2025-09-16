@@ -2,8 +2,8 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 
 return {
-  'nvim-neo-tree/neo-tree.nvim',
-  version = '*',
+  "nvim-neo-tree/neo-tree.nvim",
+  version = "*",
   -- init = function()
   --   vim.api.nvim_create_autocmd('BufEnter', {
   --     -- make a group to be able to delete it later
@@ -19,27 +19,44 @@ return {
   --   })
   --   -- keymaps
   -- end,
+  init = function()
+    require("neo-tree").setup({
+      event_handlers = {
+
+        {
+          event = "file_open_requested",
+          handler = function()
+            -- auto close
+            -- vim.cmd("Neotree close")
+            -- OR
+            require("neo-tree.command").execute({ action = "close" })
+          end,
+        },
+      },
+    })
+  end,
+
   dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-    'MunifTanjim/nui.nvim',
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "MunifTanjim/nui.nvim",
   },
-  cmd = 'Neotree',
+  cmd = "Neotree",
   keys = {
-    { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+    { "\\", ":Neotree reveal<CR>", { desc = "NeoTree reveal" } },
   },
   opts = {
     filesystem = {
       filtered_items = {
         visible = true,
       },
-      hijack_netrw_behavior = 'open_default',
+      hijack_netrw_behavior = "open_default",
       follow_current_file = {
         enabled = true,
       },
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          ["\\"] = "close_window",
         },
       },
     },

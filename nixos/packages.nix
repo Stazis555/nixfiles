@@ -43,6 +43,7 @@
     unzip
     brave
 
+    spotify
     lutris
     wowup-cf
     chiaki
@@ -53,5 +54,8 @@
     spotdl
     ffmpeg
     alsa-utils
+
   ];
+
+  services.playerctld.enable = true;
 }

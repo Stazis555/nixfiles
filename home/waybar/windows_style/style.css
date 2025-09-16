@@ -184,3 +184,19 @@ tooltip label{
 	background: @bg_hover;
 }
 
+#custom-firefox_button,
+#custom-spotify_button,
+#custom-lutris_button
+{
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 24px;
+  padding-left: 12px;
+  padding-right: 12px;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#custom-lutris_button
+{
+  padding-right: 5px;
+}
+

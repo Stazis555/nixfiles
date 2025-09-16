@@ -18,7 +18,7 @@
 ========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
 ========                                                     ========
 =====================================================================
-=====================================================================
+aa=====================================================================
 
 What is Kickstart?
 
@@ -159,6 +159,8 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor
 vim.opt.scrolloff = 10
+
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions"
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
