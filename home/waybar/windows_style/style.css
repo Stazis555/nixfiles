@@ -166,7 +166,7 @@ tooltip label{
 
 #network {
 	padding-left: 3px;
-  padding-right: 3px;
+	padding-right: 3px;
 }
 
 #language {
@@ -191,8 +191,17 @@ tooltip label{
   font-family: "JetBrainsMono Nerd Font";
   font-size: 24px;
   padding-left: 12px;
-  padding-right: 12px;
+  padding-right: 20px;
+  /* justify: center; */
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#custom-firefox_button:hover,
+#custom-spotify_button:hover,
+#custom-lutris_button:hover
+{
+	background:  @bg_hover;
+	color: @content_main;
 }
 
 #custom-lutris_button

@@ -1,6 +1,7 @@
 { ... }: {
   imports =
     [
+      ./caelestia
       ./eza
       ./gtk
       ./hyprland

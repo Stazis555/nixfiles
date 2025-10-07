@@ -32,7 +32,7 @@
   environment.systemPackages = with pkgs; [
     hyprpaper
     # hyprcursor
-    rofi-wayland
+    rofi
     xdg-desktop-portal-gtk
     xdg-desktop-portal
     gtk4

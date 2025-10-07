@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
     k9s
@@ -54,6 +54,15 @@
     spotdl
     ffmpeg
     alsa-utils
+
+    # inputs.caelestia-shell.packages.${system}.default
+    # inputs.caelestia-cli.packages.${system}.default
+    #
+    # clipse
+
+    fuzzel
+    cliphist
+    notify-desktop
 
   ];
 
