@@ -11,8 +11,10 @@
         environment = [];
       };
       settings = {
+        general.idle.timeouts = [];
         bar.status = {
           showBattery = false;
+          showAudio = true;
         };
         services = {
           useTwelveHourClock = false;

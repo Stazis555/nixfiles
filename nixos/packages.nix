@@ -8,7 +8,7 @@
     direnv
 
     telegram-desktop
-    firefox-wayland
+    firefox
     chromium
     vesktop
     # (vesktop.overrideAttrs(oldAttrs: {
@@ -28,7 +28,7 @@
     lm_sensors
     lsof
     keymapp
-    obsidian
+    # obsidian
     syncthing
     qbittorrent
 

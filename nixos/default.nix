@@ -8,5 +8,6 @@
       ./packages.nix
       ./wifi.nix
       ./hyprland.nix
+      ./printing.nix
     ];
 }
