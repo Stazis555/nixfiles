@@ -21,8 +21,23 @@ return {
   -- end,
   init = function()
     require("neo-tree").setup({
+      filesystem = {
+        filtered_items = {
+          visible = false,
+          hide_dotfiles = false,
+          hide_gitignored = false,
+        },
+        hijack_netrw_behavior = "open_default",
+        follow_current_file = {
+          enabled = true,
+        },
+        window = {
+          mappings = {
+            ["\\"] = "close_window",
+          },
+        },
+      },
       event_handlers = {
-
         {
           event = "file_open_requested",
           handler = function()
@@ -45,20 +60,5 @@ return {
   keys = {
     { "\\", ":Neotree reveal<CR>", { desc = "NeoTree reveal" } },
   },
-  opts = {
-    filesystem = {
-      filtered_items = {
-        visible = true,
-      },
-      hijack_netrw_behavior = "open_default",
-      follow_current_file = {
-        enabled = true,
-      },
-      window = {
-        mappings = {
-          ["\\"] = "close_window",
-        },
-      },
-    },
-  },
+  opts = {},
 }
