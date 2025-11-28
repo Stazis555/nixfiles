@@ -706,6 +706,14 @@ require("lazy").setup({
       --     vim.bo.filetype = 'yaml.gitlab'
       --   end,
       -- })
+      --
+
+      vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        pattern = "*/templates/**/*.yaml",
+        callback = function()
+          vim.bo.filetype = "helm"
+        end,
+      })
     end,
   },
 

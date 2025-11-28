@@ -97,7 +97,10 @@
   fonts.packages = with pkgs; [
     fira-code
     noto-fonts-cjk-sans
-  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+    nerd-fonts.fira-code
+    nerd-fonts.roboto-mono
+  ];
+  # ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   system.stateVersion = "24.11"; # Did you read the comment?
 }
