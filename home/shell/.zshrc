@@ -106,6 +106,8 @@ source <(fzf --zsh)
 
 export EDITOR=nvim
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 #Yazi
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

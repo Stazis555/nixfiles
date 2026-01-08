@@ -53,6 +53,8 @@
             # rustc
             rustfmt
             rust-bin.stable.latest.default
+            openssl
+            ## Gene
 
             bump2version
             kubernetes-helm

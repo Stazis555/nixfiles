@@ -12,30 +12,34 @@
     chromium
     vesktop
     # (vesktop.overrideAttrs(oldAttrs: {
-    #     version = "1.5.4";
+    #     version = "1.5.7";
     #     # patches = [];
     #     # phases = ["postConfigure" "preBuild" "buildPhase" "postBuild" "installPhase" "postFixup"];
     #     src = fetchFromGitHub {
     #       owner = "Vencord";
     #       repo = "Vesktop";
-    #       rev = "v1.5.4";
-    #       hash = "sha256-zvyDKgNTRha7Z7KGAA7x9LRJrL+1zyb5TZEFFK8Ffrc=";
+    #       rev = "v1.5.7";
+    #       hash = "sha256-2YVaDfvhmuUx2fVm9PuMPQ3Z5iu7IHJ7dgF52a1stoM=";
     #   };
-    #   pnpmDeps = pnpm_9.fetchDeps {
-    #     hash = "sha256-GSAOdvd8X4dQNTDZMnzc4oMY54TKvdPuAOMb6DRzCEM=";
+    #   pnpmDeps = pnpm_10.fetchDeps {
+    #     pname = "vesktop";
+    #     version = "1.5.7";
+    #     fetcherVersion = 2;
+    #     hash = "sha256-C05rDd5bcbR18O6ACgzS0pQdWzB99ulceOBpW+4Zbqw=";
     #   };
     # }))
     lm_sensors
     lsof
     keymapp
     # obsidian
-    syncthing
+    # syncthing
     qbittorrent
 
     git
     fzf
     zoxide
     jq
+    openssl
     # nushell
 
     geeqie
@@ -46,7 +50,7 @@
     spotify
     lutris
     wowup-cf
-    chiaki
+    # chiaki
     godot_4
     solaar
 

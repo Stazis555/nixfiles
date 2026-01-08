@@ -983,6 +983,9 @@ require("lazy").setup({
               cond = require("noice").api.statusline.mode.has,
               color = { fg = "#4271ae" },
             },
+            {
+              require("minuet.lualine"),
+            },
             "encoding",
             "fileformat",
             "filetype",

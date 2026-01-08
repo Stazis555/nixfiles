@@ -22,12 +22,13 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  services.resolved.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Tallinn";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_GB.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "et_EE.UTF-8";
