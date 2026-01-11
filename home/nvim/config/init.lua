@@ -527,7 +527,7 @@ require("lazy").setup({
           map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
           -- Find references for the word under your cursor.
-          map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+          map("gR", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
@@ -983,9 +983,9 @@ require("lazy").setup({
               cond = require("noice").api.statusline.mode.has,
               color = { fg = "#4271ae" },
             },
-            {
-              require("minuet.lualine"),
-            },
+            -- {
+            --   require("minuet.lualine"),
+            -- },
             "encoding",
             "fileformat",
             "filetype",
