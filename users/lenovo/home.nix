@@ -8,9 +8,9 @@
 
 {
   imports = [
-    ./home/eza
-    ./home/nvim
-    ./home/shell/default-mihhail.nix
+    ./../../home/eza
+    ./../../home/nvim
+    ./../../home/shell/default-mihhail.nix
   ];
 
   fonts.fontconfig.enable = true;
