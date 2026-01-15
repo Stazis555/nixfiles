@@ -28,14 +28,19 @@
         nixos = lib.nixosSystem {
           inherit system;
           # specialArgs = { oldnixpkgs = import oldnixpkgs { inherit system; }; };
-          modules = [ ./configuration.nix ];
+          modules = [ ./users/stazis/configuration.nix ];
         };
       };
       homeConfigurations = {
         stazis = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs; };
-          modules = [ ./home.nix ];
+          modules = [ ./users/stazis/home.nix ];
+        };
+        mihhail = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [ ./users/lenovo/home.nix ];
         };
       };
       devShells.${system} = {

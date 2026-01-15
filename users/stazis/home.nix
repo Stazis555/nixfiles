@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./home
+    ./../../home
   ];
 
   home.username = "stazis";
@@ -14,7 +14,7 @@
     inputs.hyprland-qtutils.packages."${pkgs.system}".default
   ];
 
-  stazis.waybar.enable = true;
+  stazis.waybar.enable = false;
   # stazis.waybar.style = "default";
 
 

@@ -40,6 +40,7 @@
     zoxide
     jq
     openssl
+    nixfmt
     # nushell
 
     geeqie
