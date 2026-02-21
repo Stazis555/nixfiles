@@ -1,13 +1,13 @@
 { ... }:
 {
-  imports =
-    [
-      ./keymapp
-      ./yazi
-      ./tailscale
-      ./packages.nix
-      ./wifi.nix
-      ./hyprland.nix
-      ./printing.nix
-    ];
+  imports = [
+    ./keymapp
+    ./yazi
+    ./tailscale
+    ./noisetorch
+    ./packages.nix
+    ./wifi.nix
+    ./hyprland.nix
+    ./printing.nix
+  ];
 }

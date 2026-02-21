@@ -1,14 +1,19 @@
-
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, oldnixpkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  oldnixpkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./../../nixos
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./../../nixos
+  ];
 
   # Docker
   virtualisation.docker.enable = true;
@@ -50,8 +55,12 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "stazis";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
+    packages = with pkgs; [ ];
   };
 
   # Enable automatic login for the user.
@@ -60,7 +69,10 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -92,6 +104,13 @@
         support32Bit = true;
       };
       jack.enable = true;
+      extraConfig = {
+        pipewire."quantum.conf" = {
+          "context.properties" = {
+            "default.clock.min-quantum" = 1024;
+          };
+        };
+      };
     };
   };
 
