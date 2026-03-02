@@ -86,9 +86,17 @@
     steam.enable = true;
 
     _1password-gui.enable = true;
-    thunar.enable = true;
+    thunar = {
+      enable = true;
+      plugins = with pkgs; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    };
     xfconf.enable = true;
   };
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
 
   # sound.enable = true;
   # sound.mediaKeys.enable = true;
