@@ -977,10 +977,11 @@ require("lazy").setup({
           theme = "auto",
         },
         sections = {
+          lualine_c = { { "filename", path = 1 } },
           lualine_x = {
             {
-              require("noice").api.statusline.mode.get,
-              cond = require("noice").api.statusline.mode.has,
+              require("noice").api.status.mode.get,
+              cond = require("noice").api.status.mode.has,
               color = { fg = "#4271ae" },
             },
             -- {
