@@ -100,9 +100,9 @@
 
   # sound.enable = true;
   # sound.mediaKeys.enable = true;
+  hardware.alsa.enablePersistence = true;
 
   services = {
-
     pipewire = {
       enable = true;
       audio.enable = true;
