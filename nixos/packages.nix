@@ -34,6 +34,7 @@
     # obsidian
     # syncthing
     qbittorrent
+    krita
 
     git
     fzf
@@ -51,7 +52,7 @@
     spotify
     lutris
     wowup-cf
-    # chiaki
+    chiaki-ng
     godot_4
     solaar
 

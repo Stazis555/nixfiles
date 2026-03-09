@@ -9,5 +9,6 @@
     ./wifi.nix
     ./hyprland.nix
     ./printing.nix
+    ./tablet.nix
   ];
 }
