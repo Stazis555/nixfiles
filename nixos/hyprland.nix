@@ -1,4 +1,3 @@
-
 { pkgs, ... }:
 {
   # Configure keymap in X11
@@ -50,9 +49,12 @@
   xdg = {
     portal = {
       enable = true;
-      extraPortals = with pkgs; [xdg-desktop-portal-gtk xdg-desktop-portal-hyprland];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
+      ];
       config = {
-        common.default = ["gtk"];
+        common.default = [ "gtk" ];
       };
     };
   };

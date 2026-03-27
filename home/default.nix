@@ -1,14 +1,14 @@
-{ ... }: {
-  imports =
-    [
-      ./caelestia
-      ./eza
-      ./gtk
-      ./hyprland
-      ./notification
-      ./nvim
-      ./shell
-      ./waybar
-      ./rofi
-    ];
+{ ... }:
+{
+  imports = [
+    ./caelestia
+    ./eza
+    ./gtk
+    ./hyprland
+    ./notification
+    ./nvim
+    ./shell
+    ./waybar
+    ./rofi
+  ];
 }

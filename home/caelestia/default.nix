@@ -1,4 +1,5 @@
-{ inputs, ...}: {
+{ inputs, ... }:
+{
   imports = [
     inputs.caelestia-shell.homeManagerModules.default
   ];
@@ -8,10 +9,12 @@
       systemd = {
         enable = false; # if you prefer starting from your compositor
         target = "graphical-session.target";
-        environment = [];
+        environment = [ ];
       };
       settings = {
-        general.idle.timeouts = [];
+        general.idle.timeouts = [ ];
+        border.thickness = 0;
+        border.rounding = 0;
         bar.status = {
           showBattery = false;
           showAudio = true;

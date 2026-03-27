@@ -1,7 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
-  xdg.configFile = {
-    "hypr/".source = ./config;
+  # xdg.configFile = {
+  #   "hypr/".source = ./config;
+  # };
+
+  wayland.windowManager.hyprland = {
+    # systemd.enable = false;
+    enable = true;
+    # ...
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.csgo-vulkan-fix
+      # ...
+    ];
   };
 
   home.packages = with pkgs; [

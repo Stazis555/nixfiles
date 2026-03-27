@@ -3,6 +3,11 @@
 
   inputs = {
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     nixpkgs.url = "nixpkgs/nixos-unstable";
     # oldnixpkgs.url = "github:nixos/nixpkgs?rev=21808d22b1cda1898b71cf1a1beb524a97add2c4";
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -14,16 +19,25 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, rust-overlay, hyprland-qtutils, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      rust-overlay,
+      hyprland-qtutils,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       overlays = [ (import rust-overlay) ];
       lib = nixpkgs.lib;
       # pkgs = nixpkgs.legacyPackages.${system};
       pkgs = import nixpkgs {
-          inherit system overlays;
+        inherit system overlays;
       };
-    in {
+    in
+    {
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
@@ -75,13 +89,13 @@
             vulkan-loader
             vulkan-tools
             pkg-config
-	  ];
+          ];
           # PKG_CONFIG_PATH = "${pkgs.wayland}/lib/pkgconfig/:${pkgs.alsa-lib}/lib/pkgsconfig/";
           LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}";
           shellHook = ''
             export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/run/opengl-driver/lib:/run/opengl-driver-32/lib";
           '';
-	};
+        };
       };
     };
 }

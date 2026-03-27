@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  services.input-remapper = {
+    enable = true;
+    enableUdevRules = true;
+  };
   # hardware.opentabletdriver = {
   #   enable = true;
   # };
