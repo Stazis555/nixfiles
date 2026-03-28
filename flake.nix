@@ -41,6 +41,7 @@
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs; };
           # specialArgs = { oldnixpkgs = import oldnixpkgs { inherit system; }; };
           modules = [ ./users/stazis/configuration.nix ];
         };

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   # Configure keymap in X11
   services.xserver = {
@@ -23,12 +23,14 @@
   programs = {
     hyprland = {
       enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       xwayland.enable = true;
     };
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "true";
   environment.systemPackages = with pkgs; [
+    gamescope # gamescope -w 2560 -h 1440 -W 3440 -H 1440 -f -S fit --backend wayland --force-composition -- %command%
     hyprpaper
     # hyprcursor
     rofi
@@ -49,9 +51,9 @@
   xdg = {
     portal = {
       enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        # pkgs.xdg-desktop-portal-hyprland
       ];
       config = {
         common.default = [ "gtk" ];
