@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 {
   xdg.configFile = {
     "nvim/".source = ./config;
@@ -16,7 +16,8 @@
         cargo
         rustc
         nixd
-      ] ++ [nodePackages.typescript-language-server];
+        typescript-language-server
+      ];
     };
     ripgrep = {
       enable = true;

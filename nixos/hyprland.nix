@@ -39,6 +39,7 @@
     gtk4
     gtk3
     wine-wayland
+    wineWow64Packages.stable
     winetricks
     wl-clipboard
     wlogout

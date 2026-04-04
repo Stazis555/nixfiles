@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./ambxst
     ./keymapp
     ./yazi
     ./tailscale

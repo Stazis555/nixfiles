@@ -640,7 +640,7 @@ require("lazy").setup({
       --   },
       -- }
 
-      require("lspconfig").lua_ls.setup({
+      vim.lsp.config("lua_ls", {
         capabilities = capabilities,
         settings = {
           Lua = {
@@ -654,27 +654,27 @@ require("lazy").setup({
           },
         },
       })
-      require("lspconfig").rust_analyzer.setup({
+      vim.lsp.config("rust_analyzer", {
         capabilities = capabilities,
         settings = {},
       })
 
-      require("lspconfig").ts_ls.setup({
+      vim.lsp.config("ts_ls", {
         capabilities = capabilities,
         settings = {},
       })
 
-      require("lspconfig").nixd.setup({
+      vim.lsp.config("nixd", {
         capabilities = capabilities,
         settings = {},
       })
 
-      require("lspconfig").gdscript.setup({
+      vim.lsp.config("gdscript", {
         capabilities = capabilities,
         settings = {},
       })
 
-      require("lspconfig").gopls.setup({
+      vim.lsp.config("gopls", {
         capabilities = capabilities,
         settings = {},
       })

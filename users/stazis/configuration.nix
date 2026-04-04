@@ -27,6 +27,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  nix.settings.substituters = [ "https://nixos-cache-proxy.cofob.dev" ];
+  # networking.networkmanager.insertNameservers = [ "1.1.1.1" "8.8.8.8" ];
   services.resolved.enable = true;
 
   # Set your time zone.
@@ -127,6 +129,9 @@
     noto-fonts-cjk-sans
     nerd-fonts.fira-code
     nerd-fonts.roboto-mono
+
+    corefonts
+    vista-fonts
   ];
   # ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 

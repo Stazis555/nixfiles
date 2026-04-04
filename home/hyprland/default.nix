@@ -10,7 +10,7 @@
     # ];
 
     settings = {
-      "$terminal" = "kitty";
+      "$terminal" = "kitty -o allow_remote_control=yes";
       "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
       "$mainMod" = "SUPER";
@@ -24,11 +24,11 @@
         "hyprpaper"
         "hyprctl setcursor rose-pine-hyprcursor 28"
         "systemctl --user start hyprpolkitagent"
-        "/home/stazis/vesktop.sh"
-        "[workspace 4 silent] Telegram"
+        "[workspace 4 silent] sleep 2 && vesktop"
+        "[workspace 4 silent] sleep 3 && Telegram"
         "steam"
         "[workspace 6 silent] 1password"
-        "sleep 1 && caelestia shell -d"
+        # "sleep 2 && caelestia shell -d"
         "amixer -c $(arecord -l | rg Blue | rg -o 'card [0-9]+' | tr -d 'card ') set \"Mic\" playback 5%"
         "[workspace 6 silent] qbittorrent"
         "wl-paste --watch cliphist store"
@@ -47,7 +47,8 @@
         "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = false;
         allow_tearing = false;
-        layout = "master";
+        # layout = "master";
+        layout = "dwindle";
       };
 
       decoration = {
@@ -84,8 +85,14 @@
       };
 
       dwindle = {
-        pseudotile = true;
+        # pseudotile = true;
         preserve_split = true;
+        smart_resizing = false;
+        # smart_split = true;
+        # permanent_direction_override = true;
+        # split_width_multiplier = 2.0;
+        # force_split = 2;
+        # use_active_for_splits = false;
       };
 
       master = { };
@@ -112,14 +119,15 @@
       };
 
       bind = [
-        "$mainMod, W, global, caelestia:launcher"
+        # "$mainMod, W, global, caelestia:launcher"
         "$mainMod, Q, exec, $terminal"
         "$mainMod SHIFT, C, killactive,"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
         "$mainMod, R, exec, $menu"
         "$mainMod, P, pseudo,"
-        # "$mainMod, J, togglesplit,"
+        "$mainMod, B, layoutmsg, togglesplit"
+        "$mainMod, T, layoutmsg, swapsplit"
         "$mainMod, SPACE, exec, rofi -show drun"
         "$mainMod SHIFT, SPACE, exec, rofi -show run"
         "$mainMod, left, movefocus, l"
@@ -148,15 +156,17 @@
         "$mainMod SHIFT, 0, movetoworkspace, 10"
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
+        # "$mainMod, mouse_down, workspace, e+1"
+        # "$mainMod, mouse_up, workspace, e-1"
         "$mainMod ALT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
         "$mainMod ALT SHIFT, S, exec, grimblast --freeze copy area | grim"
         "$mainMod, F, fullscreen"
-        "SUPER, C, exec, caelestia clipboard"
+        # "SUPER, C, exec, caelestia clipboard"
         "$mainMod, Y, exec, amixer -c $(arecord -l | rg Blue | rg -o 'card [0-9]+' | tr -d 'card ') sset 'Mic' playback 5%+ | notify-desktop -u low \"Mic volume: $(amixer -c $(arecord -l | rg Blue | rg -o 'card [0-9]+' | tr -d 'card ') get 'Mic' | rg -o '[0-9]+%' | head -1)\""
         "$mainMod SHIFT, Y, exec, amixer -c $(arecord -l | rg Blue | rg -o 'card [0-9]+' | tr -d 'card ') sset 'Mic' playback 5%- | notify-desktop -u low \"Mic volume: $(amixer -c $(arecord -l | rg Blue | rg -o 'card [0-9]+' | tr -d 'card ') get 'Mic' | rg -o '[0-9]+%' | head -1)\""
-        "SUPER, Period, exec, pkill fuzzel || caelestia emoji -p"
+        # "SUPER, Period, exec, pkill fuzzel || caelestia emoji -p"
+        # "$mainMod, mouse:272, exec, hyprctl keyword dwindle:smart_split 1"
+        # "$mainMod, mouse:272, exec, hyprctl keyword dwindle:smart_split 0"
       ];
 
       bindm = [
@@ -172,6 +182,7 @@
     };
 
     extraConfig = ''
+      source = ~/.local/share/ambxst/hyprland.conf
       windowrule {
           name = windowrule-1
           suppress_event = maximize
@@ -180,8 +191,14 @@
 
       windowrule {
           name = windowrule-2
-          no_initial_focus = on
-          match:class = (bevy)
+          # no_initial_focus = on
+          float = on
+          # move = 100 100
+          # animation = popin
+          # center = no
+          # pseudo = on
+          size=600 600
+          match:initial_class = (bevy)
       }
 
       windowrule {
@@ -191,18 +208,18 @@
           match:class = (vesktop)
       }
 
-      windowrule {
-          name = windowrule-4
-          workspace = 9 silent
-          no_initial_focus = on
-          match:class = (steam)
-      }
+      # windowrule {
+      #     name = windowrule-4
+      #     workspace = 9 silent
+      #     no_initial_focus = on
+      #     match:class = (steam)
+      # }
 
-      windowrule {
-          name = windowrule-5
-          workspace = 8 silent
-          match:class = ^(steam_app_.*|.*[Ww]ine.*)$
-      }
+      # windowrule {
+      #     name = windowrule-5
+      #     workspace = 8 silent
+      #     match:class = ^(steam_app_.*|.*[Ww]ine.*)$
+      # }
 
       windowrule {
           name = windowrule-6
@@ -211,10 +228,12 @@
           match:title = ^(notification)(.*)$
       }
 
-      device {
-          name = wacom-intuos-pro-s-pen
-          output = DP-1
-      }
+      # workspace = 2, layoutopt:direction:right
+
+      # device {
+      #     name = wacom-intuos-pro-s-pen
+      #     output = DP-1
+      # }
     '';
   };
 
@@ -227,5 +246,7 @@
 
     rose-pine-cursor
     rose-pine-hyprcursor
+
+    # wallrizz
   ];
 }
