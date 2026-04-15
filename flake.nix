@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ambxst = {
-      url = "github:Axenide/Ambxst";
+      url = "github:Stazis555/Ambxst?ref=drop-easyeffects";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

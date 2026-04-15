@@ -654,30 +654,37 @@ require("lazy").setup({
           },
         },
       })
+      vim.lsp.enable("lua_ls")
+
       vim.lsp.config("rust_analyzer", {
         capabilities = capabilities,
         settings = {},
       })
+      vim.lsp.enable("rust_analyzer")
 
       vim.lsp.config("ts_ls", {
         capabilities = capabilities,
         settings = {},
       })
+      vim.lsp.enable("ts_ls")
 
       vim.lsp.config("nixd", {
         capabilities = capabilities,
         settings = {},
       })
+      vim.lsp.enable("nixd")
 
       vim.lsp.config("gdscript", {
         capabilities = capabilities,
         settings = {},
       })
+      vim.lsp.enable("gdscript")
 
       vim.lsp.config("gopls", {
         capabilities = capabilities,
         settings = {},
       })
+      vim.lsp.enable("gopls")
 
       -- require('mason').setup()
 

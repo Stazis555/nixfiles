@@ -208,12 +208,12 @@
           match:class = (vesktop)
       }
 
-      # windowrule {
-      #     name = windowrule-4
-      #     workspace = 9 silent
-      #     no_initial_focus = on
-      #     match:class = (steam)
-      # }
+      windowrule {
+          name = windowrule-4
+          workspace = 5 silent
+          no_initial_focus = on
+          match:class = (steam)
+      }
 
       # windowrule {
       #     name = windowrule-5
@@ -230,10 +230,11 @@
 
       # workspace = 2, layoutopt:direction:right
 
-      # device {
-      #     name = wacom-intuos-pro-s-pen
-      #     output = DP-1
-      # }
+      device {
+          name = wacom-intuos-pro-s-pen
+          # output = DP-1
+          enabled = false
+      }
     '';
   };
 

@@ -1,12 +1,12 @@
 { pkgs, ... }:
 {
-  services.input-remapper = {
-    enable = true;
-    enableUdevRules = true;
-  };
-  # hardware.opentabletdriver = {
+  # services.input-remapper = {
   #   enable = true;
+  #   enableUdevRules = true;
   # };
-  # hardware.uinput.enable = true;
-  # boot.kernelModules = [ "uinput" ];
+  hardware.opentabletdriver = {
+    enable = true;
+  };
+  hardware.uinput.enable = true;
+  boot.kernelModules = [ "uinput" ];
 }

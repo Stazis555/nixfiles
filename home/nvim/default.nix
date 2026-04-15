@@ -7,6 +7,8 @@
   programs = {
     neovim = {
       enable = true;
+      withPython3 = false;
+      withRuby = false;
       defaultEditor = true;
       extraPackages = with pkgs; [
         lua-language-server
