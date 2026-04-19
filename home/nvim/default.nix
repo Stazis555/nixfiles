@@ -12,6 +12,7 @@
       defaultEditor = true;
       extraPackages = with pkgs; [
         lua-language-server
+        tree-sitter
         nodejs
         stylua
         rust-analyzer

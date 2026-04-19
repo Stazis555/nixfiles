@@ -175,6 +175,8 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+vim.diagnostic.config({ virtual_text = true, virtual_lines = { current_line = true } })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -323,7 +325,6 @@ require("lazy").setup({
   { -- Fuzzy Finder (files, lsp, etc)
     "nvim-telescope/telescope.nvim",
     event = "VimEnter",
-    branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -984,7 +985,22 @@ require("lazy").setup({
           theme = "auto",
         },
         sections = {
-          lualine_c = { { "filename", path = 1 } },
+          lualine_c = {
+            { "filename", path = 1 },
+            -- {
+            --   function()
+            --     -- Use lsp_signature's status_line() function
+            --     local sig = require("lsp_signature").status_line(0)
+            --     -- Return the signature text; it returns empty if no signature is active
+            --     return sig.label .. " " .. sig.hint
+            --   end,
+            --   cond = function()
+            --     -- Only show if the plugin is available and an LSP is active
+            --     return package.loaded["lsp_signature"] ~= nil
+            --   end,
+            --   color = { fg = "#ffffff", gui = "italic" }, -- Customize appearance
+            -- },
+          },
           lualine_x = {
             {
               require("noice").api.status.mode.get,
@@ -1004,9 +1020,9 @@ require("lazy").setup({
   },
   { -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     build = ":TSUpdate",
     opts = {
-      ensure_installed = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -1018,13 +1034,33 @@ require("lazy").setup({
       },
       indent = { enable = true, disable = { "ruby", "yaml" } },
     },
+    init = function()
+      local ensureInstalled = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" }
+      local alreadyInstalled = require("nvim-treesitter.config").get_installed()
+      local parsersToInstall = vim
+        .iter(ensureInstalled)
+        :filter(function(parser)
+          return not vim.tbl_contains(alreadyInstalled, parser)
+        end)
+        :totable()
+      require("nvim-treesitter").install(parsersToInstall)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          -- Enable treesitter highlighting and disable regex syntax
+          pcall(vim.treesitter.start)
+          -- Enable treesitter-based indentation
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
+    end,
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
       -- Prefer git instead of curl in order to improve connectivity in some environments
       require("nvim-treesitter.install").prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
-      require("nvim-treesitter.configs").setup(opts)
+      require("nvim-treesitter").setup(opts)
 
       -- There are additional nvim-treesitter modules that you can use to interact
       -- with nvim-treesitter. You should go explore a few and see what interests you:
