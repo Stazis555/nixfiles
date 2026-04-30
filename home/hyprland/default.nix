@@ -8,6 +8,8 @@
     # plugins = [
     #   inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.csgo-vulkan-fix
     # ];
+    # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # plugins = [ inputs.hy3.packages.x86_64-linux.hy3 ];
 
     settings = {
       "$terminal" = "kitty -o allow_remote_control=yes";
@@ -16,7 +18,8 @@
       "$mainMod" = "SUPER";
 
       monitor = [
-        "HDMI-A-1,3440x1440@100,0x0,1"
+        # "HDMI-A-1,3440x1440@100,0x0,1"
+        "DP-1,3440x1440@100,0x0,1"
       ];
 
       "exec-once" = [
@@ -86,8 +89,8 @@
 
       dwindle = {
         # pseudotile = true;
-        preserve_split = true;
-        smart_resizing = false;
+        # preserve_split = true;
+        # smart_resizing = false;
         # smart_split = true;
         # permanent_direction_override = true;
         # split_width_multiplier = 2.0;

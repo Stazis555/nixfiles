@@ -4,6 +4,10 @@
   inputs = {
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
     hyprland.url = "github:hyprwm/Hyprland";
+    # hy3 = {
+    #   url = "github:outfoxxed/hy3";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -25,11 +29,10 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
       rust-overlay,
-      hyprland-qtutils,
+      hyprland,
       ...
     }@inputs:
     let
@@ -54,7 +57,10 @@
         stazis = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs; };
-          modules = [ ./users/stazis/home.nix ];
+          modules = [
+            hyprland.homeManagerModules.default
+            ./users/stazis/home.nix
+          ];
         };
         mihhail = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

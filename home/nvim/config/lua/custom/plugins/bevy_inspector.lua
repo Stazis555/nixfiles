@@ -1,5 +1,5 @@
 return {
-  "Stazis555/bevy_inspector.nvim",
+  "Lommix/bevy_inspector.nvim",
   dependencies = {
     "nvim-telescope/telescope.nvim",
     "nvim-lua/plenary.nvim",
