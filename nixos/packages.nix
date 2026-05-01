@@ -11,6 +11,7 @@
     firefox
     chromium
     vesktop
+    weylus
     # (vesktop.overrideAttrs(oldAttrs: {
     #     version = "1.5.7";
     #     # patches = [];

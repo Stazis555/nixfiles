@@ -24,6 +24,10 @@
   boot.supportedFilesystems = [ "ntfs" ];
 
   networking.hostName = "nixos"; # Define your hostname.
+  networking.firewall = {
+    enable = true;
+    trustedInterfaces = [ "enp6s0" ];
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;

@@ -88,8 +88,9 @@
       };
 
       dwindle = {
-        # pseudotile = true;
-        # preserve_split = true;
+        pseudotile = true;
+        preserve_split = true;
+        precise_mouse_move = true; # windowrulev2 = layoutmsg preselect d, workspace:6 # maybe?
         # smart_resizing = false;
         # smart_split = true;
         # permanent_direction_override = true;
@@ -168,8 +169,8 @@
         "$mainMod, Y, exec, amixer -c $(arecord -l | rg Blue | rg -o 'card [0-9]+' | tr -d 'card ') sset 'Mic' playback 5%+ | notify-desktop -u low \"Mic volume: $(amixer -c $(arecord -l | rg Blue | rg -o 'card [0-9]+' | tr -d 'card ') get 'Mic' | rg -o '[0-9]+%' | head -1)\""
         "$mainMod SHIFT, Y, exec, amixer -c $(arecord -l | rg Blue | rg -o 'card [0-9]+' | tr -d 'card ') sset 'Mic' playback 5%- | notify-desktop -u low \"Mic volume: $(amixer -c $(arecord -l | rg Blue | rg -o 'card [0-9]+' | tr -d 'card ') get 'Mic' | rg -o '[0-9]+%' | head -1)\""
         # "SUPER, Period, exec, pkill fuzzel || caelestia emoji -p"
-        # "$mainMod, mouse:272, exec, hyprctl keyword dwindle:smart_split 1"
-        # "$mainMod, mouse:272, exec, hyprctl keyword dwindle:smart_split 0"
+        "$mainMod, mouse:272, exec, hyprctl keyword dwindle:smart_split 1"
+        "$mainMod, mouse:272, exec, hyprctl keyword dwindle:smart_split 0"
       ];
 
       bindm = [
