@@ -102,6 +102,7 @@
     xfconf.enable = true;
   };
   services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.gnome.glib-networking.enable = true;
   services.tumbler.enable = true; # Thumbnail support for images
 
   # sound.enable = true;

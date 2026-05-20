@@ -43,6 +43,7 @@
     jq
     openssl
     nixfmt
+    nautilus
     # nushell
 
     geeqie

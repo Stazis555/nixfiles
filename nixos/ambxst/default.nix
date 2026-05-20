@@ -3,5 +3,5 @@
   imports = [
     inputs.ambxst.nixosModules.default
   ];
-  programs.ambxst.enable = true; 
+  programs.ambxst.enable = true;
 }

@@ -9,22 +9,25 @@
     #   inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.csgo-vulkan-fix
     # ];
     # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # plugins = [ inputs.hy3.packages.x86_64-linux.hy3 ];
+    plugins = [ inputs.hy3.packages.x86_64-linux.hy3 ];
 
     settings = {
       "$terminal" = "kitty -o allow_remote_control=yes";
       "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
       "$mainMod" = "SUPER";
+      "$hy3MainMod" = "SUPER + ALT";
 
       monitor = [
         # "HDMI-A-1,3440x1440@100,0x0,1"
         "DP-1,3440x1440@100,0x0,1"
+        "HDMI-A-2, 1920x1080, -1920x0,1"
       ];
 
       "exec-once" = [
+        "waypaper --restore"
         "mako"
-        "hyprpaper"
+        # "hyprpaper"
         "hyprctl setcursor rose-pine-hyprcursor 28"
         "systemctl --user start hyprpolkitagent"
         "[workspace 4 silent] sleep 2 && vesktop"
@@ -35,6 +38,7 @@
         "amixer -c $(arecord -l | rg Blue | rg -o 'card [0-9]+' | tr -d 'card ') set \"Mic\" playback 5%"
         "[workspace 6 silent] qbittorrent"
         "wl-paste --watch cliphist store"
+        "sleep 3 && hyprctl keyword general:layout hy3"
       ];
 
       env = [
@@ -43,15 +47,17 @@
       ];
 
       general = {
-        gaps_in = 5;
-        gaps_out = "0,0,0,10";
+        # gaps_in = 5;
+        # gaps_out = "0,0,0,10";
+        gaps_out = 5;
         border_size = 1;
         "col.active_border" = "rgba(ff7eb9ee) rgba(ff65a3ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = false;
         allow_tearing = false;
         # layout = "master";
-        layout = "dwindle";
+        # layout = "dwindle";
+        layout = "hy3";
       };
 
       decoration = {
@@ -88,9 +94,10 @@
       };
 
       dwindle = {
-        pseudotile = true;
+        # pseudotile = true;
         preserve_split = true;
         precise_mouse_move = true; # windowrulev2 = layoutmsg preselect d, workspace:6 # maybe?
+        # split_width_multiplier = 2;
         # smart_resizing = false;
         # smart_split = true;
         # permanent_direction_override = true;
@@ -126,6 +133,7 @@
         # "$mainMod, W, global, caelestia:launcher"
         "$mainMod, Q, exec, $terminal"
         "$mainMod SHIFT, C, killactive,"
+        "$mainMod SHIFT, C, killactive,"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
         "$mainMod, R, exec, $menu"
@@ -134,10 +142,10 @@
         "$mainMod, T, layoutmsg, swapsplit"
         "$mainMod, SPACE, exec, rofi -show drun"
         "$mainMod SHIFT, SPACE, exec, rofi -show run"
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+        # "$mainMod, left, movefocus, l"
+        # "$mainMod, right, movefocus, r"
+        # "$mainMod, up, movefocus, u"
+        # "$mainMod, down, movefocus, d"
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -171,6 +179,31 @@
         # "SUPER, Period, exec, pkill fuzzel || caelestia emoji -p"
         "$mainMod, mouse:272, exec, hyprctl keyword dwindle:smart_split 1"
         "$mainMod, mouse:272, exec, hyprctl keyword dwindle:smart_split 0"
+
+        "$hy3MainMod, d, hy3:makegroup, h, toggle"
+        "$hy3MainMod, v, hy3:makegroup, v, toggle"
+        "$hy3MainMod, t, hy3:makegroup, tab, toggle"
+        "$hy3MainMod, f, hy3:changefocus, raise"
+        "$hy3MainMod+SHIFT, f, hy3:changefocus, lower"
+        "$hy3MainMod, x, hy3:locktab"
+        "$hy3MainMod, e, hy3:expand, expand"
+        "$hy3MainMod+SHIFT, e, hy3:expand, base"
+        "$hy3MainMod, g, hy3:changegroup, opposite"
+
+        "$mainMod, left, hy3:movefocus, l"
+        "$mainMod, right, hy3:movefocus, r"
+        "$mainMod, up, hy3:movefocus, u"
+        "$mainMod, down, hy3:movefocus, d"
+        "$mainMod+SHIFT, left, hy3:movewindow, l"
+        "$mainMod+SHIFT, right, hy3:movewindow, r"
+        "$mainMod+SHIFT, up, hy3:movewindow, u"
+        "$mainMod+SHIFT, down, hy3:movewindow, d"
+
+        "$mainMod, W, exec, dms ipc launcher toggle"
+        "$mainMod, C, exec, dms ipc clipboard toggle"
+        "$mainMod, ESCAPE, exec, dms ipc powermenu toggle"
+        "$mainMod+SHIFT, comma, exec, waypaper --random"
+        "$mainMod, comma, exec, waypaper"
       ];
 
       bindm = [
@@ -186,11 +219,17 @@
     };
 
     extraConfig = ''
-      source = ~/.local/share/ambxst/hyprland.conf
+      # source = ~/.local/share/ambxst/hyprland.conf
       windowrule {
           name = windowrule-1
           suppress_event = maximize
           match:class = .*
+      }
+
+      windowrule {
+          name = waypaper
+          float = on
+          match:initial_class = (waypaper)
       }
 
       windowrule {
@@ -201,7 +240,6 @@
           # animation = popin
           # center = no
           # pseudo = on
-          size=600 600
           match:initial_class = (bevy)
       }
 
@@ -232,12 +270,29 @@
           match:title = ^(notification)(.*)$
       }
 
-      # workspace = 2, layoutopt:direction:right
+      workspace = 1, monitor:DP-1
+      workspace = 2, monitor:DP-1
+      workspace = 3, monitor:DP-1
+      workspace = 4, monitor:DP-1
+      workspace = 5, monitor:DP-1
+      workspace = 6, monitor:DP-1
+      workspace = 7, monitor:HDMI-A-2
 
       device {
           name = wacom-intuos-pro-s-pen
           # output = DP-1
           enabled = false
+      }
+
+
+
+      plugin {
+          hy3 {
+              autotile {
+                  enable = true
+                  trigger_width = 900
+              }
+          }
       }
     '';
   };
@@ -254,4 +309,11 @@
 
     # wallrizz
   ];
+
+  # xdg.mimeApps = {
+  #   enable = true;
+  #   defaultApplications = {
+  #     "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+  #   };
+  # };
 }

@@ -1,10 +1,16 @@
-{ lib, ...}:
+{ lib, ... }:
 {
   home.file = {
     ".zshrc".source = ./.zshrc;
   };
 
   programs = {
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
+
     kitty = {
       enable = true;
       # font.name = "MartianMonoNerdFontMono";

@@ -31,7 +31,7 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "true";
   environment.systemPackages = with pkgs; [
     gamescope # gamescope -w 2560 -h 1440 -W 3440 -H 1440 -f -S fit --backend wayland --force-composition -- %command%
-    hyprpaper
+    # hyprpaper
     # hyprcursor
     rofi
     xdg-desktop-portal-gtk
@@ -53,12 +53,34 @@
     portal = {
       enable = true;
       extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal
         # pkgs.xdg-desktop-portal-hyprland
       ];
       config = {
-        common.default = [ "gtk" ];
+        # Add for your WM, e.g., hyprland
+        common.default = [
+          "hyprland"
+          "gtk"
+        ];
+        hyprland.default = [
+          "hyprland"
+          "gtk"
+        ];
+        # "org.freedesktop.impl.portal.FileChooser" = [ "hyprland" ];
       };
     };
   };
+
+  # programs.appimage.enable = true;
+  # programs.appimage.binfmt = true;
+  # programs.appimage.package = pkgs.appimage-run.override {
+  #   extraPkgs = pkgs: [
+  #     pkgs.icu
+  #     pkgs.libxcrypt-legacy
+  #     pkgs.python312
+  #     pkgs.python312Packages.torch
+  #   ];
+  # };
+
+  services.upower.enable = true;
 }

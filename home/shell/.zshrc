@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 plugins=(git)
 
 # source $ZSH/oh-my-zsh.sh
@@ -35,7 +36,15 @@ zinit snippet OMZP::git
 # zinit snippet OMZP::command-not-found
 
 # Load completions
-autoload -Uz compinit && compinit
+autoload -Uz compinit # && compinit -C
+# Only regenerate .zcompdump once a day
+# if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+if [[ -n $(find ~/.zcompdump -mmin +3600 2>/dev/null) ]]; then
+  echo "fullscan"
+  compinit
+else
+  compinit -C
+fi
 
 zinit cdreplay -q
 

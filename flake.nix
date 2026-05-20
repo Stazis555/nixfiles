@@ -4,10 +4,10 @@
   inputs = {
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
     hyprland.url = "github:hyprwm/Hyprland";
-    # hy3 = {
-    #   url = "github:outfoxxed/hy3";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
+    hy3 = {
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -23,6 +23,10 @@
     };
     ambxst = {
       url = "github:Stazis555/Ambxst?ref=drop-easyeffects";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
